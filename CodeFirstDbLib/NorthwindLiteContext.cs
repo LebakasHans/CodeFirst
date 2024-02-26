@@ -16,7 +16,7 @@ public class NorthwindLiteContext : DbContext
   protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
   {
     if (optionsBuilder.IsConfigured) return;
-    string connectionString = "server=(LocalDB)\\mssqllocaldb;attachdbfilename=C:\\Users\\jakob\\Documents\\Schule\\Pos\\C#\\121_CodeFirst\\NorthwindLite.mdf; database=NorthwindLite;integrated security=True;MultipleActiveResultSets=True;";
+    string connectionString = "server=(LocalDB)\\mssqllocaldb;attachdbfilename=C:\\Users\\jakob\\Documents\\Schule\\Pos\\125_CodeFirst\\NorthwindLiteNew.mdf; database=NorthwindLiteNew;integrated security=True;MultipleActiveResultSets=True;";
     optionsBuilder.UseSqlServer(connectionString);
   }
 }

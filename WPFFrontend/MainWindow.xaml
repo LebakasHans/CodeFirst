@@ -18,12 +18,12 @@
       <ColumnDefinition Width="5*"/>
       <ColumnDefinition Width="2*"/>
     </Grid.ColumnDefinitions>
-    <TreeView Name="trvCustomers" Grid.Row="0" />
+    <TreeView Name="trvCustomers" Grid.Row="0" SelectedItemChanged="trvCustomers_SelectedItemChanged"/>
     <DockPanel Grid.Column="2">
       <Label DockPanel.Dock="Top" Content="Products"/>
-      <TextBox DockPanel.Dock="Bottom"/>
-      <Button DockPanel.Dock="Bottom" Content="Add New Product"/>
-      <ListBox />
+      <TextBox x:Name="txtProductName" DockPanel.Dock="Bottom"/>
+      <Button DockPanel.Dock="Bottom" Content="Add New Product" Click="Button_Click"/>
+      <ListBox x:Name="lbxProducts" DisplayMemberPath="Description" />
     </DockPanel>
     <Grid Grid.Column="1" Grid.Row="0">
       <Grid.RowDefinitions>
@@ -37,15 +37,24 @@
         <ColumnDefinition Width="*"/>
       </Grid.ColumnDefinitions>
       <Label Content="Lieferdatum:" Grid.Row="0" Grid.Column="0" />
-      <TextBox Grid.Row="0" Grid.Column="1" />
-      <Button Content="Mitarbeiter zuweisen" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
-VerticalAlignment="Top" />
+      <TextBox x:Name="txtDate" Grid.Row="0" Grid.Column="1"/>
+      <Button Content="Mitarbeiter zuweisen" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Top" Click="Button_Click_1"/>
       <Label Content="Mitarbeiter filtern:" Grid.Row="0" Grid.Column="2"/>
-      <TextBox Grid.Row="1" Grid.Column="2" />
-      <ListBox Grid.Row="2" Grid.Column="2" />
+      <TextBox x:Name="txtEmployee" Grid.Row="1" Grid.Column="2" TextChanged="txtEmployee_TextChanged"/>
+       <ListBox x:Name="lbxEmployeeAutocomplete" Grid.Row="2" Grid.Column="2" DisplayMemberPath="FullName" SelectionChanged="lbxEmployeeAutocomplete_SelectionChanged"/>
     </Grid>
-    <DataGrid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" />
-    <Label Grid.Row="2" Grid.Column="0" />
+        <DataGrid x:Name="grdShipment" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Employee Name" Binding="{Binding EmployeeName}" />
+                <DataGridTextColumn Header="Order" Binding="{Binding Order}" />
+                <DataGridTextColumn Header="Customer Name" Binding="{Binding CustomerName}" />
+                <DataGridTextColumn Header="Sequence Nr" Binding="{Binding SequenceNr}" />
+                <DataGridTextColumn Header="Delivery Date" Binding="{Binding DeliveryDate}" />
+                <DataGridTextColumn Header="Plan Date" Binding="{Binding PlanDate}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Label Grid.Row="2" Grid.Column="0" />
     <Label Grid.Row="2" Grid.Column="1" HorizontalContentAlignment="Right" />
   </Grid>
 </Window>

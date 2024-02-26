@@ -6,5 +6,5 @@ public class Customer
   public string Name { get; set; } = null!;
   public double Latitude { get; set; }
   public double Longitude { get; set; }
-  List<Order> Orders { get; set; } = [];
+  public List<Order> Orders { get; set; } = [];
 }
